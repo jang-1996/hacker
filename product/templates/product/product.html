@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <img class="img1" src="{% static 'images/naeri.png' %}" alt="이미지">
+</div>
+<div class="card img2">
+    <div class="card-body">
+      <h5 class="card-title">VASHI란?</h5>
+      <p class="card-text">Yours의 러시아어로써 고객님의, 고객님에 의한, 고객님을 위한 회사가 되겠다는 다짐을 담고 있습니다.</p><br>
+      <h5 class="card-title">Who is CEO?</h5>
+      <p class="card-text">이름: 장내리 (Nastya)</p>
+      <p class="card-text">직업: 아티스트, 모델, 사업가</p>
+      <p class="card-text">학력: 상명대학교 섬유디자인과</p>
+      <a href="https://www.instagram.com/nae_ri_vashi/?hl=ko" class="card-link">Instagram</a>
+      <a href="https://smartstore.naver.com/vashi" class="card-link">Vashi's store</a>
+    </div>
+  </div>
+{% endblock %}
