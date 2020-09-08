@@ -1,9 +1,9 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 {% load static %}
-{% block content %} 
+{% block content %}
 <div class="container">
     {% if user.is_authenticated %}
-    <h3>제품 목록</h3>    
+    <h3>제품 목록</h3>
     <a class="btn btn-primary" href="{% url 'posts:new' %}" role="button">새제품 올리기</a>
     <div class="row">
         {% for post in posts %}
@@ -13,11 +13,17 @@
                     <h5 class="card-title">{{ post.title }}</h5>
                     <p class="card-text">{{ post.content }}</p>
                     <p>{{ post.created_at }}</p>
+                    <a href="{% url 'posts:post_like' post.id %}"> 
+                        {% if user in post.like_user_set.all %} 
+                        <i class="fas fa-heart"></i>
+                        {% else %}
+                        <i class="far fa-heart"></i>
+                        {% endif %} </a>
                     <a href="{% url 'posts:show' post.pk %}" class="btn btn-primary">상세보기</a>
                 </div>
             </div>
         </div>
-        {% endfor %} 
+        {% endfor %}
     </div>
 </div>
 {% else %}
@@ -25,5 +31,3 @@
 {% endif %}
 </div>
 {% endblock %}
-
-
