@@ -68,3 +68,23 @@ def post_like(request,post_id):
 def like_list(request):
     likes = request.user.like_set.all()
     return render(request,'posts/like_list.html',{'likes':likes})
+
+@login_required
+def love(request):
+    likes = request.user.like_set.all()
+    return render(request,'posts/love.html',{'likes':likes})
+
+@login_required
+def write(request):
+    posts = Post.objects.all()
+    return render(request, 'posts/write.html', {'posts': posts})
+
+@login_required
+def follower(request):
+    posts = Post.objects.all()
+    return render(request, 'posts/follower.html', {'posts': posts})
+
+@login_required
+def following(request):
+    posts = Post.objects.all()
+    return render(request, 'posts/following.html', {'posts': posts})

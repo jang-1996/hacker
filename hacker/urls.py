@@ -27,6 +27,7 @@ urlpatterns = [
     path('', TemplateView.as_view(template_name="social_app/index.html")),
     path('posts/', include('posts.urls')),
     path('accounts/', include('allauth.urls')),
+    path('users/', include('users.urls')),
     ]
 
 urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

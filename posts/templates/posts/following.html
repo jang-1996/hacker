@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+{% for post in posts %}
+{% if user.profile in post.user.profile.followers.all %}
+<div class="container">
+    <div class="col-md-4 col-12">
+        <div class="card" style="width: 18rem; margin-top: 20px;">
+            <p>{{ post.user }}</p>
+            <a class="follow-btn">
+                {% if user != post.user %}
+                {% if user.profile in post.user.profile.followers.all %}
+                <a href="{% url 'users:follow_toggle' post.user.id %}" class="btn btn-primary">팔로잉</a>
+                {% else %}
+                <a href="{% url 'users:follow_toggle' post.user.id %}" class="btn btn-outline-primary">팔로우</a>
+                {% endif %}
+                {% endif %}
+            </a>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endfor %}
+{% endblock %}

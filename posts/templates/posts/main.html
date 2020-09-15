@@ -12,14 +12,33 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ post.title }}</h5>
                     <p class="card-text">{{ post.content }}</p>
+
+                    {% if user == post.user %}
+                    <a href="{% url 'posts:like_list' %}">
+                        <p>{{ post.user }}</p>
+                    </a>
+                    {% else %}
+                    <p>{{ post.user }}</p>
+
+                    {% endif %}
+
                     <p>{{ post.created_at }}</p>
-                    <a href="{% url 'posts:post_like' post.id %}"> 
-                        {% if user in post.like_user_set.all %} 
+                    <a href="{% url 'posts:post_like' post.id %}">
+                        {% if user in post.like_user_set.all %}
                         <i class="fas fa-heart"></i>
                         {% else %}
                         <i class="far fa-heart"></i>
                         {% endif %} </a>
                     <a href="{% url 'posts:show' post.pk %}" class="btn btn-primary">상세보기</a>
+                    <a class="follow-btn">
+                        {% if user != post.user %}
+                        {% if user.profile in post.user.profile.followers.all %}
+                        <a href="{% url 'users:follow_toggle' post.user.id %}" class="btn btn-primary">팔로잉</a>
+                        {% else %}
+                        <a href="{% url 'users:follow_toggle' post.user.id %}" class="btn btn-outline-primary">팔로우</a>
+                        {% endif %}
+                        {% endif %}
+                    </a>
                 </div>
             </div>
         </div>

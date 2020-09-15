@@ -13,4 +13,8 @@ urlpatterns = [
     path('<int:post_id>/create_comment', create_comment, name="create_comment"),
     path('<int:post_id>/post_like', post_like, name="post_like"),
     path('like_list/', like_list, name="like_list"),
+    path('love/',love, name="love"),
+    path('write/',write, name="write"),
+    path('follower/',follower, name="follower"),
+    path('following/',following, name="following"),
 ]
