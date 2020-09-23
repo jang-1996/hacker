@@ -1,10 +1,15 @@
 {% extends 'base.html' %}
-{% block content %} <div class="container">
+
+{% load static %}
+
+{% block content %}
+<div class="container">
     <h1>
         상품 등록
     </h1>
     <form action="{% url 'posts:create' %}" method="POST" enctype="multipart/form-data">
-        {% csrf_token %} <!--장고 제공 보안 방식-->
+        {% csrf_token %}
+        <!--장고 제공 보안 방식-->
         <div class="form-group">
             <label>제품 이름</label>
             <input type="text" class="form-control" name="title"> </div>

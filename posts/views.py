@@ -7,6 +7,7 @@ import pdb
 def new(request):
     return render(request, 'posts/new.html')
 
+@login_required
 def create(request):
     if request.method == "POST":
         title = request.POST.get('title')
@@ -15,6 +16,7 @@ def create(request):
         user = request.user
         Post.objects.create(title=title, content=content, image=image, user=user) 
         return redirect('posts:main')
+      
 
 def main(request):
     posts = Post.objects.all()
